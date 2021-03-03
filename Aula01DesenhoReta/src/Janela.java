@@ -14,7 +14,6 @@ public class Janela extends JFrame {
 		tela.setPreferredSize(new Dimension(620, 620));
 		
 		add(new Tela(), BorderLayout.CENTER);
-		//add(new Botoes(), BorderLayout.LINE_END);
 		
 		
 		setVisible(true);

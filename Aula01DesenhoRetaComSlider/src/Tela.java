@@ -2,10 +2,19 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 
 import javax.swing.JPanel;
 
 public class Tela extends JPanel {
+	
+	int x0 = 10;
+	int y0 = 10;
+	int x1 = 120;
+	int y1 = 220;
+	
+	int value = 0;
+	
 	
 	@Override
 	public void paintComponent(Graphics g) {
@@ -16,10 +25,21 @@ public class Tela extends JPanel {
 		
 		g2d.setColor(Color.MAGENTA);
 		g2d.setStroke(new BasicStroke(10));
-		g2d.drawLine(10, 10, 120, 220);
-		//g2d.drawLine(x1, y1, x2, y2);
 		
+		x0 = 10;
+		y0 = 10;
+		x1 = 120;
+		y1 = 220;
+		
+		x0 += value;
+		x1 += value;
+		
+		g2d.drawLine(x0, y0, x1, y1);
 	}
 	
+	public void atualizaValor(int novoValor) {
+		this.value = novoValor;
+		this.repaint();
+	}
 
 }

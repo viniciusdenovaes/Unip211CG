@@ -1,3 +1,4 @@
+package view;
 import java.awt.Label;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,9 @@ public class Botoes extends JPanel {
 	JSlider sliderSX = new JSlider(1, 5, 1);
 	JSlider sliderSY = new JSlider(1, 5, 1);
 	
+	double rFator = 100;
+	JSlider sliderR = new JSlider(0, (int)(2*Math.PI*rFator), 0);
+	
 	public Botoes() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		add(new Label("Translade em X"));
@@ -24,6 +28,8 @@ public class Botoes extends JPanel {
 		add(sliderSX);
 		add(new Label("Escala em Y"));
 		add(sliderSY);
+		add(new Label("Rotacao"));
+		add(sliderR);
 	}
 	
 	public int getValorSlideTX() {
@@ -42,14 +48,16 @@ public class Botoes extends JPanel {
 		return sliderSY.getValue();
 	}
 	
-	public void adicionaListenerSlideT(ChangeListener cl) {
-		sliderTX.addChangeListener(cl);
-		sliderTY.addChangeListener(cl);
+	public double getValorSlideR() {
+		return (double)sliderR.getValue()/(double)rFator;
 	}
 	
-	public void adicionaListenerSlideS(ChangeListener cl) {
+	public void adicionaListenerSlide(ChangeListener cl) {
+		sliderTX.addChangeListener(cl);
+		sliderTY.addChangeListener(cl);
 		sliderSX.addChangeListener(cl);
 		sliderSY.addChangeListener(cl);
+		sliderR.addChangeListener(cl);
 	}
 	
 	
